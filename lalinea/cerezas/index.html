@@ -3,12 +3,12 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>Exportaciones de Cerezas Chilenas — CápsulaData</title>
+<title>Exportaciones de cerezas — CápsulaData</title>
 <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@600;700&family=Inter:wght@400;500;600&display=swap" rel="stylesheet">
-<script src="../vendor/chart.umd.min.js"></script>
+<script src="./vendor/chart.umd.min.js"></script>
 <style>
 *{margin:0;padding:0;box-sizing:border-box}
-:root{--bg:#0f172a;--card:#1e293b;--text:#f8fafc;--muted:#94a3b8;--accent:#60a5fa;--accent2:#38bdf8;--border:#334155;--chile:#f87171}
+:root{--bg:#0f172a;--card:#1e293b;--text:#f8fafc;--muted:#94a3b8;--accent:#be185d;--accent2:#ec4899;--border:#334155;--chile:#be185d}
 body{font-family:'Inter',-apple-system,sans-serif;background:var(--bg);color:var(--text);line-height:1.6;overflow-x:hidden}
 .la-linea{font-family:'Playfair Display',serif;font-style:italic;letter-spacing:-0.02em}
 header{position:fixed;top:0;width:100%;z-index:100;display:flex;justify-content:space-between;align-items:center;padding:1rem 2rem;background:rgba(15,23,42,0.85);backdrop-filter:blur(10px);border-bottom:1px solid var(--border)}
@@ -17,7 +17,7 @@ header .brand .sub{font-family:'Inter';font-size:0.55rem;color:var(--muted);disp
 header nav a{color:var(--muted);text-decoration:none;margin-left:1.5rem;font-size:0.8rem;transition:color .2s}
 header nav a:hover{color:var(--text)}
 .hero{min-height:100vh;display:flex;flex-direction:column;justify-content:center;align-items:center;text-align:center;padding:6rem 2rem 4rem;background:radial-gradient(circle at 50% 30%,#1e3a5f 0%,#0f172a 60%)}
-.hero .big{font-size:clamp(3rem,10vw,7rem);font-family:'Playfair Display',serif;font-style:italic;font-weight:700;line-height:0.95;background:linear-gradient(120deg,#60a5fa,#38bdf8);-webkit-background-clip:text;background-clip:text;color:transparent}
+.hero .big{font-size:clamp(3rem,10vw,7rem);font-family:'Playfair Display',serif;font-style:italic;font-weight:700;line-height:0.95;background:linear-gradient(120deg,#be185d,#ec4899);-webkit-background-clip:text;background-clip:text;color:transparent}
 .hero .powered{margin-top:1.5rem;font-size:0.7rem;letter-spacing:0.2em;text-transform:uppercase;color:var(--muted)}
 .hero p.lead{max-width:600px;margin:2rem auto 0;font-size:1.1rem;color:var(--muted)}
 .hero .cta{margin-top:2.5rem;display:flex;gap:1rem;flex-wrap:wrap;justify-content:center}
@@ -88,78 +88,32 @@ footer .commercial{font-size:0.6rem;text-transform:uppercase;letter-spacing:0.15
 <section class="hero">
 <div class="big">Exportaciones de cerezas</div>
 <div class="powered">Powered by CápsulaData</div>
-<p class="lead">Análisis de grandes volúmenes de datos para entender, diagnosticar y predecir la economía. Desde 1958 hasta hoy, con fuentes oficiales.</p>
+<p class="lead">Proyecto activo · datos públicos · fuentes oficiales · documentado y actualizado.</p>
 <div class="cta">
 <a href="#proyectos" class="btn">Ver proyectos</a>
 <a href="#proyectos" class="btn outline">Explorar dashboard</a>
 </div>
 </section>
 
-<section class="block" id="proyectos">
-<h2 class="section-title">Proyectos</h2>
-<p class="section-sub">CápsulaData construye productos de datos sectoriales. Cada proyecto es un análisis propio con datos públicos, documentado y actualizado.</p>
-<div class="cards">
-<div class="card">
-<h3>Chile 1958–2026</h3>
-<p>Dashboard macroeconómico histórico: PIB, inflación, tipo de cambio, tasas, empleo, cobre, petróleo y población. 13 indicadores, 68 años de historia, 24 países comparados. <strong>Proyecto activo.</strong></p>
-<a href="#chile" class="btn">Abrir proyecto →</a>
+<section class="block" id="cerezas">
+<h2 class="section-title">Exportaciones de cerezas frescas</h2>
+<p class="section-sub">Serie histórica ODEPA · 2005–2026 · valor FOB, volumen, precio por tonelada.</p>
+<div class="kpi-grid" id="kpiGrid">
+  <div class="kpi-card"><div class="label">Valor FOB última temporada</div><div class="value">USD 3.147 M</div><div class="change">2023/24</div></div>
+  <div class="kpi-card"><div class="label">Volumen última temporada</div><div class="value">233,4 kt</div><div class="change">2023/24</div></div>
+  <div class="kpi-card"><div class="label">Precio FOB</div><div class="value">USD 13,5 /t</div><div class="change">2023/24</div></div>
+  <div class="kpi-card"><div class="label">Destino principal</div><div class="value">China 87%</div><div class="change">valor</div></div>
 </div>
-<div class="card">
-<h3>Exportaciones y mercado de la cereza</h3>
-<p>Análisis de volúmenes, destinos, precios y estacionalidad de exportaciones de cereza chilena. Datos ODEPA/Aduanas, filtros por destination y precio FOB.</p>
-<a href="https://joago99.github.io/la-linea-web/cerezas/" target="_blank" rel="noopener" class="btn">Exportaciones de cerezas →</a>
-</div>
-<div class="card">
-<h3>Mercado de bombas de hormigón y repuestos</h3>
-<p>Análisis de demanda, importaciones, actores y repuestos en el mercado de bombas de hormigón en Chile. Filtros por partida 8413.91.00 y marcas.</p>
-<a href="https://joago99.github.io/la-linea-web/bombas-hormigon/" target="_blank" rel="noopener" class="btn">Bombas de hormigón →</a>
-</div>
-</div>
-</section>
-
-<!-- CHILE DASHBOARD -->
-<section class="block" id="chile">
-<h2 class="section-title">Dashboard Chile 1958–2026</h2>
-<p class="section-sub">Datos reales del Banco Central de Chile e INE. Selecciona un indicador, filtra por presidente o rango de años.</p>
-<div class="kpi-grid" id="kpiGrid"><div style="grid-column:1/-1;text-align:center;padding:1.5rem;color:var(--muted);font-size:0.8rem">Cargando datos BCCh...</div></div>
-<div class="controls" style="margin-bottom:0.3rem">
-<span style="font-size:0.65rem;color:var(--muted);margin-right:0.2rem">Indicador:</span><span id="indChips"></span>
-</div>
-<div class="controls">
-<span style="font-size:0.65rem;color:var(--muted)">Fechas:</span>
-<input type="number" class="date-input" id="dateFrom" value="1958" min="1958" max="2026">
-<span style="color:var(--muted)">–</span>
-<input type="number" class="date-input" id="dateTo" value="2026" min="1958" max="2026">
-<button class="btn-sm" onclick="applyDateFilter()">Filtrar</button>
-<button class="btn-sm outline" id="btnAgg" onclick="toggleAggregation()" title="Agregación anual automática para rangos largos">Auto</button>
-</div>
+<div class="controls"><span style="font-size:0.65rem;color:var(--muted)">Métrica:</span><span id="indChips"></span></div>
 <div class="chart-wrap"><canvas id="mainChart"></canvas></div>
-<div class="data-note" id="dataNote"></div>
-<div class="prez-bar" id="prezBar"></div>
-<div class="prez-label" id="prezLabel"></div>
+<div class="data-note" id="dataNote">Fuente: ODEPA · Matriz Detallada de Comercio Exterior · 2005–2026</div>
 </section>
-
-<section class="block" id="mundo">
-<h2 class="section-title">Chile vs el Mundo</h2>
-<p class="section-sub">PIB per cápita (USD corrientes) comparado con 23 economías. Siempre con Chile como referencia. Datos: Banco Mundial (NY.GDP.PCAP.CD), 1960–2023.</p>
-<div class="sc-grid" id="scGrid">
-<div class="sc-card"><h3>1. La brecha que no se cierra</h3><div class="bigidea">Chile creció sostenidamente, pero EE.UU. y Noruega se alejan: en 2023 Chile tiene 1/5 del PIB per cápita de Noruega.</div><canvas id="sc1"></canvas><div class="note">Línea roja = Chile. Escala lineal en USD.</div></div>
-<div class="sc-card"><h3>2. ¿Dónde cae Chile hoy?</h3><div class="bigidea">Chile lidera a sus pares sudamericanos, pero está a mitad de tabla global.</div><canvas id="sc2"></canvas><div class="note">Ranking 2023, barras horizontales. Chile en rojo destacado.</div></div>
-<div class="sc-card"><h3>3. ¿Quién corrió más desde 1990?</h3><div class="bigidea">China multiplicó su PIB per cápita por 12x; Chile por 4x.</div><canvas id="sc3"></canvas><div class="note">Índice base 1990 = 100.</div></div>
-<div class="sc-card"><h3>4. Convergencia: Chile vs mediana mundial</h3><div class="bigidea">Chile superó la mediana de los países comparados a partir de 2005.</div><canvas id="sc4"></canvas><div class="note">Chile (rojo) vs mediana de los 23 países.</div></div>
-<div class="sc-card"><h3>5. ¿Cuántos somos?</h3><div class="bigidea">Chile tiene 19,7 millones de habitantes: el 0,24% del mundo.</div><canvas id="sc5"></canvas><div class="note">Ranking de población 2023. Chile en rojo; otros países latinoamericanos en azul. Fuente: Banco Mundial.</div></div>
-</div>
-</section>
-
 <footer id="contacto">
-<div class="brand">La Línea</div>
+<div class="brand">Exportaciones de cerezas</div>
 <div class="commercial">Powered by CápsulaData</div>
 <p>Análisis de grandes datos · Entender · Diagnosticar · Predecir</p>
 <p style="margin-top:1rem;opacity:0.6">Fuentes: Banco Central de Chile (BCCh) · Instituto Nacional de Estadísticas (INE) · Banco Mundial</p>
-<div class="contacto-mini">
-<p style="margin-top:1.5rem;font-size:0.9rem">¿Quieres este tipo de análisis para tu empresa o proyecto?</p>
-<a href="https://www.linkedin.com/in/JoaquinAlmendra" target="_blank" rel="noopener" class="btn" style="margin-top:0.8rem;display:inline-block">Conéctemos en LinkedIn</a>
-</div>
+
 </footer>
 
 <script>
@@ -276,7 +230,7 @@ let macroAll = [], activeInd = 'UF', selPrez = new Set(), dateFrom = 1958, dateT
 
 async function loadMacroData() {
   try {
-    const resp = await fetch('./data/chile-macro.json');
+    const resp = await fetch('../../data/chile-macro.json');
     if (!resp.ok) throw new Error('HTTP ' + resp.status);
     const json = await resp.json();
     const baseKeys = ['TPM','UF','USD','EUR','UTM','IMACEC','IPC','DESEMPLEO','PIB','IPSA','COBRE','WTI','PIBPC','POB','POBH','POBM'];
@@ -512,8 +466,8 @@ function renderMundo() {
   buildIndChips();
   buildAll();
   try {
-    const r = await fetch('./data/world-gdp.json'); const j = await r.json(); world = j.data;
-    const rp = await fetch('./data/world-pop.json'); const jp = await rp.json(); worldPop = jp.data;
+    const r = await fetch('../../data/world-gdp.json'); const j = await r.json(); world = j.data;
+    const rp = await fetch('../../data/world-pop.json'); const jp = await rp.json(); worldPop = jp.data;
     renderMundo();
   } catch(e){ console.warn('Mundo error:', e.message); }
 })();
