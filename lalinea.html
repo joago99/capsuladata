@@ -77,8 +77,7 @@ footer .commercial{font-size:0.6rem;text-transform:uppercase;letter-spacing:0.15
 <header>
 <div class="brand">La Línea<span class="sub">Powered by CápsulaData</span></div>
 <nav>
-<a href="#chile">Dashboard Chile</a>
-<a href="#mundo">Chile vs Mundo</a>
+<a href="#proyectos">Proyectos</a>
 <a href="https://joago99.github.io/capsuladata/">CápsulaData</a>
 <a href="../servicios.html">Servicios</a>
 <a href="../index.html#contacto">Contacto</a>
@@ -91,8 +90,8 @@ footer .commercial{font-size:0.6rem;text-transform:uppercase;letter-spacing:0.15
 <div class="powered">Powered by CápsulaData</div>
 <p class="lead">Análisis de grandes volúmenes de datos para entender, diagnosticar y predecir la economía. Desde 1958 hasta hoy, con fuentes oficiales.</p>
 <div class="cta">
-<a href="#chile" class="btn">Explorar dashboard</a>
-<a href="../index.html#contacto" class="btn outline">Contacto</a>
+<a href="#proyectos" class="btn">Ver proyectos</a>
+<a href="#proyectos" class="btn outline">Explorar dashboard</a>
 </div>
 </section>
 
@@ -103,22 +102,22 @@ footer .commercial{font-size:0.6rem;text-transform:uppercase;letter-spacing:0.15
 <div class="card">
 <h3>Chile 1958–2026</h3>
 <p>Dashboard macroeconómico histórico: PIB, inflación, tipo de cambio, tasas, empleo, cobre, petróleo y población. 13 indicadores, 68 años de historia, 24 países comparados. <strong>Proyecto activo.</strong></p>
-<a href="#chile" class="btn" style="margin-top:0.6rem;display:inline-block">Abrir proyecto →</a>
+<a href="#chile" class="btn">Abrir proyecto →</a>
 </div>
 <div class="card">
 <h3>Exportaciones y mercado de la cereza</h3>
-<p>En desarrollo. Análisis de volúmenes, destinos, precios y estacionalidad de exportaciones de cereza chilena. <strong>Próximamente.</strong></p>
-<a href="#" class="btn outline" style="margin-top:0.6rem;display:inline-block;opacity:0.5;pointer-events:none">Próximamente</a>
+<p>Análisis de volúmenes, destinos, precios y estacionalidad de exportaciones de cereza chilena. Datos ODEPA/Aduanas, filtros por destination y precio FOB.</p>
+<a href="https://joago99.github.io/la-linea-web/cerezas/" target="_blank" rel="noopener" class="btn">Exportaciones de cerezas →</a>
 </div>
 <div class="card">
 <h3>Mercado de bombas de hormigón y repuestos</h3>
-<p>En desarrollo. Análisis de demanda, importaciones, actores y repuestos en el mercado de bombas de hormigón en Chile. <strong>Próximamente.</strong></p>
-<a href="#" class="btn outline" style="margin-top:0.6rem;display:inline-block;opacity:0.5;pointer-events:none">Próximamente</a>
+<p>Análisis de demanda, importaciones, actores y repuestos en el mercado de bombas de hormigón en Chile. Filtros por partida 8413.91.00 y marcas.</p>
+<a href="https://joago99.github.io/la-linea-web/bombas-hormigon/" target="_blank" rel="noopener" class="btn">Bombas de hormigón →</a>
 </div>
 </div>
 </section>
 
-<!-- DASHBOARD CHILE -->
+<!-- CHILE DASHBOARD -->
 <section class="block" id="chile">
 <h2 class="section-title">Dashboard Chile 1958–2026</h2>
 <p class="section-sub">Datos reales del Banco Central de Chile e INE. Selecciona un indicador, filtra por presidente o rango de años.</p>
@@ -140,20 +139,19 @@ footer .commercial{font-size:0.6rem;text-transform:uppercase;letter-spacing:0.15
 <div class="prez-label" id="prezLabel"></div>
 </section>
 
-<!-- CHILE VS MUNDO -->
+<!-- MUNDO -->
 <section class="block" id="mundo">
 <h2 class="section-title">Chile vs el Mundo</h2>
 <p class="section-sub">PIB per cápita (USD corrientes) comparado con 23 economías. Siempre con Chile como referencia. Datos: Banco Mundial (NY.GDP.PCAP.CD), 1960–2023.</p>
 <div class="sc-grid" id="scGrid">
 <div class="sc-card"><h3>1. La brecha que no se cierra</h3><div class="bigidea">Chile creció sostenidamente, pero EE.UU. y Noruega se alejan: en 2023 Chile tiene 1/5 del PIB per cápita de Noruega.</div><canvas id="sc1"></canvas><div class="note">Línea roja = Chile. Escala lineal en USD.</div></div>
 <div class="sc-card"><h3>2. ¿Dónde cae Chile hoy?</h3><div class="bigidea">Chile lidera a sus pares sudamericanos, pero está a mitad de tabla global.</div><canvas id="sc2"></canvas><div class="note">Ranking 2023, barras horizontales. Chile en rojo destacado.</div></div>
-<div class="sc-card"><h3>3. ¿Quién corrió más desde 1990?</h3><div class="bigidea">China multiplicó su PIB per cápita por 12x; Chile por 4x. La distancia relativa con Asia se amplió.</div><canvas id="sc3"></canvas><div class="note">Índice base 1990 = 100.</div></div>
+<div class="sc-card"><h3>3. ¿Quién corrió más desde 1990?</h3><div class="bigidea">China multiplicó su PIB per cápita por 12x; Chile por 4x.</div><canvas id="sc3"></canvas><div class="note">Índice base 1990 = 100.</div></div>
 <div class="sc-card"><h3>4. Convergencia: Chile vs mediana mundial</h3><div class="bigidea">Chile superó la mediana de los países comparados a partir de 2005.</div><canvas id="sc4"></canvas><div class="note">Chile (rojo) vs mediana de los 23 países.</div></div>
-<div class="sc-card"><h3>5. ¿Cuántos somos?</h3><div class="bigidea">Chile tiene 19,7 millones de habitantes: el 0,24% del mundo. India y China concentran el 36% de la población global.</div><canvas id="sc5"></canvas><div class="note">Ranking de población 2023. Chile en rojo; otros países latinoamericanos en azul. Fuente: Banco Mundial.</div></div>
+<div class="sc-card"><h3>5. ¿Cuántos somos?</h3><div class="bigidea">Chile tiene 19,7 millones de habitantes: el 0,24% del mundo.</div><canvas id="sc5"></canvas><div class="note">Ranking de población 2023. Chile en rojo; otros países latinoamericanos en azul. Fuente: Banco Mundial.</div></div>
 </div>
 </section>
 
-<!-- CONTACTO -->
 <footer id="contacto">
 <div class="brand">La Línea</div>
 <div class="commercial">Powered by CápsulaData</div>
