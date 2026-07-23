@@ -1,54 +1,43 @@
-import os, re
+import os
+import re
 base = r'C:/Users/joaqu/capsuladata'
 src = os.path.join(base, 'lalinea.html')
-text = open(src, encoding='utf-8').read()
+with open(src, encoding='utf-8') as f:
+    text = f.read()
 
-# Preserve original Chile dashboard block to embed unchanged except paths
-chile_match = re.search(r'<!-- CHILE DASHBOARD -->\s*<section class="block" id="chile">.*?</section>\s*\n', text, re.S)
-chile_block = chile_match.group(0) if chile_match else ''
-
-def theme_copy(original, title, accent, accent2, project_block, remove_proyectos=True, remove_mundo=True):
-    t = original
-    # Theme tokens
-    t = t.replace('--accent:#60a5fa', f'--accent:{accent}')
-    t = t.replace('--accent2:#38bdf8', f'--accent2:{accent2}')
-    t = t.replace('--chile:#f87171', f'--chile:{accent}')
-    t = t.replace('background:linear-gradient(120deg,#60a5fa,#38bdf8)', f'background:linear-gradient(120deg,{accent},{accent2})')
-    # Branding on chart colors
-    t = t.replace('#38bdf8', accent2)
-    # Title + hero
-    t = t.replace('<title>La Línea — CápsulaData</title>', f'<title>{title} — CápsulaData</title>')
-    t = t.replace('<div class="big">La Línea</div>', f'<div class="big">{title}</div>')
-    t = t.replace('<p class="lead">Análisis de grandes volúmenes de datos para entender, diagnosticar y predecir la economía. Desde 1958 hasta hoy, con fuentes oficiales.</p>', f'<p class="lead">Proyecto activo · datos públicos · fuentes oficiales · documentado y actualizado.</p>')
-    # Nav works automatically with ../index.html back link
-    # Remove sections
-    if remove_proyectos:
-        t = re.sub(r'<section class="block" id="proyectos">.*?</section>\s*\n', '', t, flags=re.S)
-    if remove_mundo:
-        t = re.sub(r'<section class="block" id="mundo">.*?</section>\s*\n', '', t, flags=re.S)
-    # Contact mini strip optional
-    t = t.replace('<div class="contacto-mini">\n<p style="margin-top:1.5rem;font-size:0.9rem">¿Quieres este tipo de análisis para tu empresa o proyecto?</p>\n<a href="https://www.linkedin.com/in/JoaquinAlmendra" target="_blank" rel="noopener" class="btn" style="margin-top:0.8rem;display:inline-block">Conéctemos en LinkedIn</a>\n</div>', '')
-    # Paths: from subfolder /lalinea/<name>/ to root/assets
-    t = t.replace('src=".//vendor/chart.umd.min.js"', 'src="../../vendor/chart.umd.min.js"')
-    t = t.replace('href="../servicios.html"', 'href="../../servicios.html"')
-    t = t.replace('href="../index.html#contacto"', 'href="../../index.html#contacto"')
-    t = t.replace('href="../lalinea.html"', 'href="../index.html"')
-    t = t.replace("fetch('./data/chile-macro.json')", "fetch('../../data/chile-macro.json')")
-    t = t.replace("fetch('./data/world-gdp.json')", "fetch('../../data/world-gdp.json')")
-    t = t.replace("fetch('./data/world-pop.json')", "fetch('../../data/world-pop.json')")
-    # Insert project-specific section replacing original chile block if present
-    if chile_block and '<!-- CHILE DASHBOARD -->' in t:
-        t = t.replace(chile_block, project_block + '\n')
-    else:
-        t = t.replace('\n<footer', '\n' + project_block + '\n<footer')
-    # Footer title
-    t = t.replace('<div class="brand">La Línea</div>', f'<div class="brand">{title}</div>')
-    return t
-
-# Project blocks
-chile_block_new = chile_block if chile_block else '<section class="block" id="chile"><h2 class="section-title">Dashboard Chile</h2></section>'
-
-cerezas_block = """<section class="block" id="cerezas">
+project_sections = {
+    'chile': {
+        'title': 'Chile 1958–2026',
+        'accent': '#ef4444',
+        'accent2': '#f87171',
+        'lead': 'Dashboard macroeconómico histórico con fuentes oficiales del Banco Central de Chile e INE.',
+        'content': '''<section class="block" id="chile">
+<h2 class="section-title">Dashboard Chile 1958–2026</h2>
+<p class="section-sub">Datos reales del Banco Central de Chile e INE. Selecciona un indicador, filtra por presidente o rango de años.</p>
+<div class="kpi-grid" id="kpiGrid"><div style="grid-column:1/-1;text-align:center;padding:1.5rem;color:var(--muted);font-size:0.8rem">Cargando datos BCCh...</div></div>
+<div class="controls" style="margin-bottom:0.3rem">
+<span style="font-size:0.65rem;color:var(--muted);margin-right:0.2rem">Indicador:</span><span id="indChips"></span>
+</div>
+<div class="controls">
+<span style="font-size:0.65rem;color:var(--muted)">Fechas:</span>
+<input type="number" class="date-input" id="dateFrom" value="1958" min="1958" max="2026">
+<span style="color:var(--muted)">–</span>
+<input type="number" class="date-input" id="dateTo" value="2026" min="1958" max="2026">
+<button class="btn-sm" onclick="applyDateFilter()">Filtrar</button>
+<button class="btn-sm outline" id="btnAgg" onclick="toggleAggregation()" title="Agregación anual automática para rangos largos">Auto</button>
+</div>
+<div class="chart-wrap"><canvas id="mainChart"></canvas></div>
+<div class="data-note" id="dataNote"></div>
+<div class="prez-bar" id="prezBar"></div>
+<div class="prez-label" id="prezLabel"></div>
+</section>'''
+    },
+    'cerezas': {
+        'title': 'Exportaciones de cerezas',
+        'accent': '#be185d',
+        'accent2': '#ec4899',
+        'lead': 'Análisis de exportaciones de cerezas frescas chilenas: mercados, precios y estacionalidad.',
+        'content': '''<section class="block" id="cerezas">
 <h2 class="section-title">Exportaciones de cerezas frescas</h2>
 <p class="section-sub">Serie histórica ODEPA · 2005–2026 · valor FOB, volumen, precio por tonelada.</p>
 <div class="kpi-grid" id="kpiGrid">
@@ -60,9 +49,14 @@ cerezas_block = """<section class="block" id="cerezas">
 <div class="controls"><span style="font-size:0.65rem;color:var(--muted)">Métrica:</span><span id="indChips"></span></div>
 <div class="chart-wrap"><canvas id="mainChart"></canvas></div>
 <div class="data-note" id="dataNote">Fuente: ODEPA · Matriz Detallada de Comercio Exterior · 2005–2026</div>
-</section>"""
-
-hormigon_block = """<section class="block" id="hormigon">
+</section>'''
+    },
+    'bombashormigon': {
+        'title': 'Bombas de hormigón',
+        'accent': '#ea580c',
+        'accent2': '#f97316',
+        'lead': 'Metodología para analizar importaciones de repuestos para bombas de hormigón en Chile.',
+        'content': '''<section class="block" id="hormigon">
 <h2 class="section-title">Bombas de hormigón y repuestos</h2>
 <p class="section-sub">Partida 8413.91.00 · Aduana Chile · triangulación Trade Map / INAPI / ProChile.</p>
 <div class="kpi-grid" id="kpiGrid">
@@ -74,27 +68,77 @@ hormigon_block = """<section class="block" id="hormigon">
 <div class="controls"><span style="font-size:0.65rem;color:var(--muted)">Vista:</span><span id="indChips"></span></div>
 <div class="chart-wrap"><canvas id="mainChart"></canvas></div>
 <div class="data-note" id="dataNote">Fuente: Aduana Chile · Trade Map · INAPI · ProChile</div>
-</section>"""
+</section>'''
+    }
+}
 
-chile_html = theme_copy(text, 'Chile 1958–2026', '#ef4444', '#f87171', chile_block_new)
-cerezas_html = theme_copy(text, 'Exportaciones de cerezas', '#be185d', '#ec4899', cerezas_block)
-hormigon_html = theme_copy(text, 'Bombas de hormigón', '#ea580c', '#f97316', hormigon_block)
+minimal_nav = '<nav>\n<a href="../index.html">← La Línea</a>\n</nav>'
 
-def write_project(name, html):
+for name, cfg in project_sections.items():
+    t = text
+    # Theme
+    t = t.replace('--accent:#60a5fa', f'--accent:{cfg["accent"]}')
+    t = t.replace('--accent2:#38bdf8', f'--accent2:{cfg["accent2"]}')
+    t = t.replace('--chile:#f87171', f'--chile:{cfg["accent"]}')
+    t = t.replace('background:linear-gradient(120deg,#60a5fa,#38bdf8)', f'background:linear-gradient(120deg,{cfg["accent"]},{cfg["accent2"]})')
+    # Title/hero
+    t = t.replace('<title>La Línea — CápsulaData</title>', f'<title>{cfg["title"]} — CápsulaData</title>')
+    t = t.replace('<div class="big">La Línea</div>', f'<div class="big">{cfg["title"]}</div>')
+    t = t.replace('<p class="lead">Análisis de grandes volúmenes de datos para entender, diagnosticar y predecir la economía. Desde 1958 hasta hoy, con fuentes oficiales.</p>', f'<p class="lead">{cfg["lead"]}</p>')
+    # Replace full nav with minimal back-only nav
+    nav_start = t.find('<nav>')
+    nav_end = t.find('</nav>') + len('</nav>')
+    t = t[:nav_start] + minimal_nav + t[nav_end:]
+    # Remove proyectos section entirely
+    proy_start = t.find('<section class="block" id="proyectos">')
+    if proy_start >= 0:
+        proy_end = t.find('</section>', proy_start) + len('</section>')
+        t = t[:proy_start] + t[proy_end:]
+    # Remove mundo section entirely
+    mundo_start = t.find('<section class="block" id="mundo">')
+    if mundo_start >= 0:
+        mundo_end = t.find('</section>', mundo_start) + len('</section>')
+        t = t[:mundo_start] + t[mundo_end:]
+    # Remove contacto-mini block
+    t = t.replace('<div class="contacto-mini">\n<p style="margin-top:1.5rem;font-size:0.9rem">¿Quieres este tipo de análisis para tu empresa o proyecto?</p>\n<a href="https://www.linkedin.com/in/JoaquinAlmendra" target="_blank" rel="noopener" class="btn" style="margin-top:0.8rem;display:inline-block">Conéctemos en LinkedIn</a>\n</div>', '')
+    # Replace CTA area with small back button
+    cta_start = t.find('<div class="cta">')
+    if cta_start >= 0:
+        cta_end = t.find('</div>', cta_start) + len('</div>')
+        t = t[:cta_start] + '<div class="cta">\n<a href="../index.html" class="btn outline">← Volver a La Línea</a>\n</div>' + t[cta_end:]
+    # Insert project content before footer
+    footer_idx = t.find('<footer id="contacto">')
+    if footer_idx >= 0:
+        t = t[:footer_idx] + cfg['content'] + '\n' + t[footer_idx:]
+    # Footer title
+    t = t.replace('<div class="brand">La Línea</div>', f'<div class="brand">{cfg["title"]}</div>')
+    # Fix paths
+    t = t.replace('src=".//vendor/chart.umd.min.js"', 'src="../../vendor/chart.umd.min.js"')
+    t = t.replace('href="../servicios.html"', 'href="../../servicios.html"')
+    t = t.replace('href="../index.html#contacto"', 'href="../../index.html#contacto"')
+    t = t.replace('href="../lalinea.html"', 'href="../index.html"')
+    t = t.replace("fetch('./data/chile-macro.json')", "fetch('../../data/chile-macro.json')")
+    t = t.replace("fetch('./data/world-gdp.json')", "fetch('../../data/world-gdp.json')")
+    t = t.replace("fetch('./data/world-pop.json')", "fetch('../../data/world-pop.json')")
+    # Remove external project links if present anywhere
+    t = t.replace('https://joago99.github.io/la-linea-web/cerezas/', './cerezas/')
+    t = t.replace('https://joago99.github.io/la-linea-web/bombas-hormigon/', './bombashormigon/')
+    # Ensure back link present
+    if '<a href="../index.html"' not in t:
+        footer_back = t.find('<footer id="contacto">')
+        if footer_back >= 0:
+            t = t[:footer_back] + '<div class="cta" style="margin-top:1.5rem"><a href="../index.html" class="btn outline">← Volver a La Línea</a></div>\n' + t[footer_back:]
     d = os.path.join(base, 'lalinea', name)
     os.makedirs(d, exist_ok=True)
     with open(os.path.join(d, 'index.html'), 'w', encoding='utf-8') as f:
-        f.write(html)
-    print('wrote', name, len(html))
+        f.write(t)
+    print('wrote', name, len(t))
 
-write_project('chile', chile_html)
-write_project('cerezas', cerezas_html)
-write_project('bombashormigon', hormigon_html)
-
-# Simplify main lalinea: keep only proyectos + footer
+# Main lalinea.html: keep proyectos section + footer; remove detailed chile/mundo sections
 main = text
-main = re.sub(r'<section class="block" id="chile">.*?</section>\s*\n', '', main, flags=re.S)
-main = re.sub(r'<section class="block" id="mundo">.*?</section>\s*\n', '', main, flags=re.S)
+main = main.replace('<section class="block" id="chile">', '<section class="block" id="chile" style="display:none">')
+main = main.replace('<section class="block" id="mundo">', '<section class="block" id="mundo" style="display:none">')
+main = main.replace('<div class="contacto-mini">\n<p style="margin-top:1.5rem;font-size:0.9rem">¿Quieres este tipo de análisis para tu empresa o proyecto?</p>\n<a href="https://www.linkedin.com/in/JoaquinAlmendra" target="_blank" rel="noopener" class="btn" style="margin-top:0.8rem;display:inline-block">Conéctemos en LinkedIn</a>\n</div>', '')
 with open(src, 'w', encoding='utf-8') as f:
     f.write(main)
 print('updated main lalinea.html')
