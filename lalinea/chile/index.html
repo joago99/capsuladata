@@ -3,9 +3,9 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>La Línea — CápsulaData</title>
+<title>Chile 1958–2026 — CápsulaData</title>
 <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@600;700&family=Inter:wght@400;500;600&display=swap" rel="stylesheet">
-<script src="./vendor/chart.umd.min.js"></script>
+<script src="../vendor/chart.umd.min.js"></script>
 <style>
 *{margin:0;padding:0;box-sizing:border-box}
 :root{--bg:#0f172a;--card:#1e293b;--text:#f8fafc;--muted:#94a3b8;--accent:#60a5fa;--accent2:#38bdf8;--border:#334155;--chile:#f87171}
@@ -79,14 +79,14 @@ footer .commercial{font-size:0.6rem;text-transform:uppercase;letter-spacing:0.15
 <nav>
 <a href="#proyectos">Proyectos</a>
 <a href="https://joago99.github.io/capsuladata/">CápsulaData</a>
-<a href="../servicios.html">Servicios</a>
-<a href="../index.html#contacto">Contacto</a>
+<a href="../../servicios.html">Servicios</a>
+<a href="../../index.html#contacto">Contacto</a>
 </nav>
 </header>
 
 <!-- HERO -->
 <section class="hero">
-<div class="big">La Línea</div>
+<div class="big">Chile 1958–2026</div>
 <div class="powered">Powered by CápsulaData</div>
 <p class="lead">Análisis de grandes volúmenes de datos para entender, diagnosticar y predecir la economía. Desde 1958 hasta hoy, con fuentes oficiales.</p>
 <div class="cta">
@@ -119,8 +119,8 @@ footer .commercial{font-size:0.6rem;text-transform:uppercase;letter-spacing:0.15
 
 <!-- CHILE DASHBOARD -->
 <section class="block" id="chile">
-<h2 class="section-title">Dashboard Chile 1958–2026</h2>
-<p class="section-sub">Datos reales del Banco Central de Chile e INE. Selecciona un indicador, filtra por presidente o rango de años.</p>
+<h2 class="section-title"></h2>
+<p class="section-sub">Datos reales del Banco Central de Chile e INE. </p>
 <div class="kpi-grid" id="kpiGrid"><div style="grid-column:1/-1;text-align:center;padding:1.5rem;color:var(--muted);font-size:0.8rem">Cargando datos BCCh...</div></div>
 <div class="controls" style="margin-bottom:0.3rem">
 <span style="font-size:0.65rem;color:var(--muted);margin-right:0.2rem">Indicador:</span><span id="indChips"></span>
@@ -139,27 +139,12 @@ footer .commercial{font-size:0.6rem;text-transform:uppercase;letter-spacing:0.15
 <div class="prez-label" id="prezLabel"></div>
 </section>
 
-<section class="block" id="mundo">
-<h2 class="section-title">Chile vs el Mundo</h2>
-<p class="section-sub">PIB per cápita (USD corrientes) comparado con 23 economías. Siempre con Chile como referencia. Datos: Banco Mundial (NY.GDP.PCAP.CD), 1960–2023.</p>
-<div class="sc-grid" id="scGrid">
-<div class="sc-card"><h3>1. La brecha que no se cierra</h3><div class="bigidea">Chile creció sostenidamente, pero EE.UU. y Noruega se alejan: en 2023 Chile tiene 1/5 del PIB per cápita de Noruega.</div><canvas id="sc1"></canvas><div class="note">Línea roja = Chile. Escala lineal en USD.</div></div>
-<div class="sc-card"><h3>2. ¿Dónde cae Chile hoy?</h3><div class="bigidea">Chile lidera a sus pares sudamericanos, pero está a mitad de tabla global.</div><canvas id="sc2"></canvas><div class="note">Ranking 2023, barras horizontales. Chile en rojo destacado.</div></div>
-<div class="sc-card"><h3>3. ¿Quién corrió más desde 1990?</h3><div class="bigidea">China multiplicó su PIB per cápita por 12x; Chile por 4x.</div><canvas id="sc3"></canvas><div class="note">Índice base 1990 = 100.</div></div>
-<div class="sc-card"><h3>4. Convergencia: Chile vs mediana mundial</h3><div class="bigidea">Chile superó la mediana de los países comparados a partir de 2005.</div><canvas id="sc4"></canvas><div class="note">Chile (rojo) vs mediana de los 23 países.</div></div>
-<div class="sc-card"><h3>5. ¿Cuántos somos?</h3><div class="bigidea">Chile tiene 19,7 millones de habitantes: el 0,24% del mundo.</div><canvas id="sc5"></canvas><div class="note">Ranking de población 2023. Chile en rojo; otros países latinoamericanos en azul. Fuente: Banco Mundial.</div></div>
-</div>
-</section>
-
 <footer id="contacto">
 <div class="brand">La Línea</div>
 <div class="commercial">Powered by CápsulaData</div>
 <p>Análisis de grandes datos · Entender · Diagnosticar · Predecir</p>
 <p style="margin-top:1rem;opacity:0.6">Fuentes: Banco Central de Chile (BCCh) · Instituto Nacional de Estadísticas (INE) · Banco Mundial</p>
-<div class="contacto-mini">
-<p style="margin-top:1.5rem;font-size:0.9rem">¿Quieres este tipo de análisis para tu empresa o proyecto?</p>
-<a href="https://www.linkedin.com/in/JoaquinAlmendra" target="_blank" rel="noopener" class="btn" style="margin-top:0.8rem;display:inline-block">Conéctemos en LinkedIn</a>
-</div>
+
 </footer>
 
 <script>
