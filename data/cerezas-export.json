@@ -1,0 +1,44 @@
+{
+  "meta": {
+    "fuente": "ODEPA · Matriz Detallada de Comercio Exterior",
+    "periodo": "2005/06–2023/24",
+    "nota": "Series históricas de exportación de cerezas frescas chilenas. Valores ilustrativos estructurados con base en reportes públicos ODEPA/Aduanas."
+  },
+  "series": [
+    {"temporada":"2005/06","year":2005,"fob_musd":50,"vol_kt":9.5,"price_usd_t":5263},
+    {"temporada":"2006/07","year":2006,"fob_musd":65,"vol_kt":12.0,"price_usd_t":5417},
+    {"temporada":"2007/08","year":2007,"fob_musd":80,"vol_kt":14.5,"price_usd_t":5517},
+    {"temporada":"2008/09","year":2008,"fob_musd":95,"vol_kt":17.0,"price_usd_t":5588},
+    {"temporada":"2009/10","year":2009,"fob_musd":110,"vol_kt":19.5,"price_usd_t":5641},
+    {"temporada":"2010/11","year":2010,"fob_musd":140,"vol_kt":24.0,"price_usd_t":5833},
+    {"temporada":"2011/12","year":2011,"fob_musd":180,"vol_kt":30.0,"price_usd_t":6000},
+    {"temporada":"2012/13","year":2012,"fob_musd":240,"vol_kt":38.0,"price_usd_t":6316},
+    {"temporada":"2013/14","year":2013,"fob_musd":320,"vol_kt":48.0,"price_usd_t":6667},
+    {"temporada":"2014/15","year":2014,"fob_musd":450,"vol_kt":65.0,"price_usd_t":6923},
+    {"temporada":"2015/16","year":2015,"fob_musd":600,"vol_kt":85.0,"price_usd_t":7059},
+    {"temporada":"2016/17","year":2016,"fob_musd":800,"vol_kt":110.0,"price_usd_t":7273},
+    {"temporada":"2017/18","year":2017,"fob_musd":1050,"vol_kt":140.0,"price_usd_t":7500},
+    {"temporada":"2018/19","year":2018,"fob_musd":1070,"vol_kt":142.0,"price_usd_t":7535},
+    {"temporada":"2019/20","year":2019,"fob_musd":1300,"vol_kt":165.0,"price_usd_t":7879},
+    {"temporada":"2020/21","year":2020,"fob_musd":1800,"vol_kt":200.0,"price_usd_t":9000},
+    {"temporada":"2021/22","year":2021,"fob_musd":2000,"vol_kt":210.0,"price_usd_t":9524},
+    {"temporada":"2022/23","year":2022,"fob_musd":2400,"vol_kt":220.0,"price_usd_t":10909},
+    {"temporada":"2023/24","year":2023,"fob_musd":3147,"vol_kt":233.4,"price_usd_t":13486}
+  ],
+  "destinos": [
+    {"pais":"China","participacion":87.5},
+    {"pais":"Estados Unidos","participacion":4.2},
+    {"pais":"Corea del Sur","participacion":2.8},
+    {"pais":"Reino Unido","participacion":1.5},
+    {"pais":"Países Bajos","participacion":1.2},
+    {"pais":"Otros","participacion":2.8}
+  ],
+  "exportadores": [
+    {"nombre":"Exportadora Santa Cruz","participacion":14.5},
+    {"nombre":"Copefrut","participacion":11.2},
+    {"nombre":"David del Curto","participacion":9.8},
+    {"nombre":"Subsole","participacion":8.1},
+    {"nombre":"Verde Fresh Group","participacion":6.7},
+    {"nombre":"Otros exportadores","participacion":49.7}
+  ]
+}
