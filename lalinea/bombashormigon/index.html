@@ -137,25 +137,25 @@ function render(){
   new Chart(document.getElementById('impChart'),{
     type:'bar',
     data:{labels:years,datasets:[{label:'Importación CIF (M USD)',data:cif,backgroundColor:'#ea580c',borderRadius:4}]},
-    options:{responsive:true,plugins:{legend:{labels:{color:'#cbd5e1',font:{size:9}}},tooltip:{callbacks:{label:c=>'USD '+fmt(c.parsed.y,1)+' M'}}},scales:{x:{ticks:{color:'#94a3b8',font:{size:8}},grid:{color:'#1e293b'}},y:{ticks:{color:'#94a3b8',callback:v=>'$'+v+'M'},grid:{color:'#1e293b'}}}}
+    options:{responsive:true,maintainAspectRatio:false,plugins:{legend:{labels:{color:'#cbd5e1',font:{size:9}}},tooltip:{callbacks:{label:c=>'USD '+fmt(c.parsed.y,1)+' M'}}},scales:{x:{ticks:{color:'#94a3b8',font:{size:8}},grid:{color:'#1e293b'}},y:{ticks:{color:'#94a3b8',callback:v=>'$'+v+'M'},grid:{color:'#1e293b'}}}}
   });
 
   new Chart(document.getElementById('origChart'),{
     type:'doughnut',
-    data:{labels:DATA.origen.map(d=>d.pais),datasets:[{data:DATA.origen.map(d=>d.participacion),backgroundColor:['#ea580c','#f97316','#fb923c','#fdba74','#fed7aa','#c4b5fd']}]},
-    options:{responsive:true,plugins:{legend:{position:'bottom',labels:{color:'#cbd5e1',font:{size:9}}},tooltip:{callbacks:{label:c=>c.label+': '+c.parsed.toFixed(1)+'%'}}}}
+    data:{labels:DATA.origen.map(d=>d.pais),datasets:[{data:DATA.origen.map(d=>d.participacion),backgroundColor:['#DE2910','#000000','#003478','#009246','#009C3B','#64748b']}]},
+    options:{responsive:true,maintainAspectRatio:false,plugins:{legend:{position:'bottom',labels:{color:'#cbd5e1',font:{size:9}}},tooltip:{callbacks:{label:c=>c.label+': '+c.parsed.toFixed(1)+'%'}}}}
   });
 
   new Chart(document.getElementById('marcasChart'),{
     type:'bar',
     data:{labels:DATA.marcas.map(d=>d.marca),datasets:[{label:'Participación (%)',data:DATA.marcas.map(d=>d.participacion),backgroundColor:DATA.marcas.map((d,i)=>i<3?'#ea580c':'#9a3412')}]},
-    options:{indexAxis:'y',responsive:true,plugins:{legend:{display:false},tooltip:{callbacks:{label:c=>c.parsed.x.toFixed(1)+'%'}}},scales:{x:{ticks:{color:'#94a3b8',callback:v=>v+'%'},grid:{color:'#1e293b'}},y:{ticks:{color:'#cbd5e1',font:{size:9}},grid:{display:false}}}}
+    options:{indexAxis:'y',responsive:true,maintainAspectRatio:false,plugins:{legend:{display:false},tooltip:{callbacks:{label:c=>c.parsed.x.toFixed(1)+'%'}}},scales:{x:{ticks:{color:'#94a3b8',callback:v=>v+'%'},grid:{color:'#1e293b'}},y:{ticks:{color:'#cbd5e1',font:{size:9}},grid:{display:false}}}}
   });
 
   new Chart(document.getElementById('tiposChart'),{
     type:'pie',
     data:{labels:DATA.tipos.map(d=>d.tipo),datasets:[{data:DATA.tipos.map(d=>d.participacion),backgroundColor:['#ea580c','#f97316','#fb923c','#94a3b8']}]},
-    options:{responsive:true,plugins:{legend:{position:'bottom',labels:{color:'#cbd5e1',font:{size:9}}},tooltip:{callbacks:{label:c=>c.label+': '+c.parsed.toFixed(1)+'%'}}}}
+    options:{responsive:true,maintainAspectRatio:false,plugins:{legend:{position:'bottom',labels:{color:'#cbd5e1',font:{size:9}}},tooltip:{callbacks:{label:c=>c.label+': '+c.parsed.toFixed(1)+'%'}}}}
   });
 
   document.getElementById('dataNote').textContent = 'Fuente: Aduana Chile · Trade Map · INAPI · ProChile · '+DATA.meta.partida+'. Series ilustrativas 2015–2024.';

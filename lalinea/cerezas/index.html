@@ -140,7 +140,7 @@ function render(){
   new Chart(document.getElementById('priceChart'),{
     type:'line',
     data:{labels:years,datasets:[{label:'Precio FOB (USD/t)',data:price,borderColor:'#ec4899',backgroundColor:'#ec48991A',borderWidth:2,pointRadius:2,tension:0.2,fill:true}]},
-    options:{responsive:true,plugins:{legend:{labels:{color:'#cbd5e1',font:{size:9}}},tooltip:{callbacks:{label:c=>'USD '+fmt(c.parsed.y)}}},scales:{x:{ticks:{color:'#94a3b8',font:{size:8},maxTicksLimit:12},grid:{color:'#1e293b'}},y:{ticks:{color:'#94a3b8',callback:v=>'$'+fmt(v)},grid:{color:'#1e293b'}}}}
+    options:{responsive:true,maintainAspectRatio:false,plugins:{legend:{labels:{color:'#cbd5e1',font:{size:9}}},tooltip:{callbacks:{label:c=>'USD '+fmt(c.parsed.y)}}},scales:{x:{ticks:{color:'#94a3b8',font:{size:8},maxTicksLimit:12},grid:{color:'#1e293b'}},y:{ticks:{color:'#94a3b8',callback:v=>'$'+fmt(v)},grid:{color:'#1e293b'}}}}
   });
 
   // Chart 2: valor vs volumen
@@ -149,15 +149,15 @@ function render(){
       {type:'bar',label:'Valor FOB (M USD)',data:fob,backgroundColor:'#be185d',yAxisID:'y',order:2},
       {type:'line',label:'Volumen (kt)',data:vol,borderColor:'#fbbf24',backgroundColor:'#fbbf24',borderWidth:2,pointRadius:2,yAxisID:'y1',order:1}
     ]},
-    options:{responsive:true,plugins:{legend:{labels:{color:'#cbd5e1',font:{size:9}}}},scales:{x:{ticks:{color:'#94a3b8',font:{size:8},maxTicksLimit:12},grid:{color:'#1e293b'}},y:{position:'left',ticks:{color:'#94a3b8'},grid:{color:'#1e293b'},title:{display:true,text:'M USD',color:'#94a3b8'}},y1:{position:'right',ticks:{color:'#fbbf24'},grid:{display:false},title:{display:true,text:'kt',color:'#fbbf24'}}}}
+    options:{responsive:true,maintainAspectRatio:false,plugins:{legend:{labels:{color:'#cbd5e1',font:{size:9}}},tooltip:{callbacks:{label:c=>c.label+': '+c.parsed.toFixed(1)+'%'}}},scales:{x:{ticks:{color:'#94a3b8',font:{size:8},maxTicksLimit:12},grid:{color:'#1e293b'}},y:{position:'left',ticks:{color:'#94a3b8'},grid:{color:'#1e293b'},title:{display:true,text:'M USD',color:'#94a3b8'}},y1:{position:'right',ticks:{color:'#fbbf24'},grid:{display:false},title:{display:true,text:'kt',color:'#fbbf24'}}}}
   });
 
   // Chart 3: destinos
   const dst = DATA.destinos;
   new Chart(document.getElementById('destChart'),{
     type:'doughnut',
-    data:{labels:dst.map(d=>d.pais),datasets:[{data:dst.map(d=>d.participacion),backgroundColor:['#be185d','#ec4899','#f472b6','#fb7185','#f9a8d4','#c4b5fd']}]},
-    options:{responsive:true,plugins:{legend:{position:'bottom',labels:{color:'#cbd5e1',font:{size:9}}},tooltip:{callbacks:{label:c=>c.label+': '+c.parsed.toFixed(1)+'%'}}}}
+    data:{labels:dst.map(d=>d.pais),datasets:[{data:dst.map(d=>d.participacion),backgroundColor:['#DE2910','#3C3B6E','#003478','#012169','#AE1C28','#64748b']}]},
+    options:{responsive:true,maintainAspectRatio:false,plugins:{legend:{position:'bottom',labels:{color:'#cbd5e1',font:{size:9}}},tooltip:{callbacks:{label:c=>c.label+': '+c.parsed.toFixed(1)+'%'}}}}
   });
 
   // Chart 4: exportadores
@@ -165,7 +165,7 @@ function render(){
   new Chart(document.getElementById('expChart'),{
     type:'bar',
     data:{labels:exp.map(d=>d.nombre),datasets:[{label:'Participación (%)',data:exp.map(d=>d.participacion),backgroundColor:exp.map((d,i)=>i<5?'#be185d':'#9d174d')}]},
-    options:{indexAxis:'y',responsive:true,plugins:{legend:{display:false},tooltip:{callbacks:{label:c=>c.parsed.x.toFixed(1)+'%'}}},scales:{x:{ticks:{color:'#94a3b8',callback:v=>v+'%'},grid:{color:'#1e293b'}},y:{ticks:{color:'#cbd5e1',font:{size:9}},grid:{display:false}}}}
+    options:{indexAxis:'y',responsive:true,maintainAspectRatio:false,plugins:{legend:{display:false},tooltip:{callbacks:{label:c=>c.parsed.x.toFixed(1)+'%'}}},scales:{x:{ticks:{color:'#94a3b8',callback:v=>v+'%'},grid:{color:'#1e293b'}},y:{ticks:{color:'#cbd5e1',font:{size:9}},grid:{display:false}}}}
   });
 
   document.getElementById('dataNote').textContent = 'Fuente: ODEPA · Matriz Detallada de Comercio Exterior · ' + DATA.meta.periodo + '. Precio promedio FOB por temporada (USD/t).';
