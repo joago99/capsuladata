@@ -1,0 +1,41 @@
+{
+  "meta": {
+    "fuente": "Aduana Chile · Trade Map · INAPI · ProChile",
+    "partida": "8413.91.00",
+    "nota": "Importación de repuestos para bombas de hormigón en Chile. Series ilustrativas estructuradas con base en triangulación de fuentes de comercio exterior; no son cifras oficiales certificadas."
+  },
+  "series": [
+    {"year":2015,"cif_musd":12.0},
+    {"year":2016,"cif_musd":14.2},
+    {"year":2017,"cif_musd":17.5},
+    {"year":2018,"cif_musd":21.3},
+    {"year":2019,"cif_musd":24.1},
+    {"year":2020,"cif_musd":19.4},
+    {"year":2021,"cif_musd":27.8},
+    {"year":2022,"cif_musd":33.2},
+    {"year":2023,"cif_musd":38.6},
+    {"year":2024,"cif_musd":42.1}
+  ],
+  "origen": [
+    {"pais":"China","participacion":52.0},
+    {"pais":"Alemania","participacion":18.0},
+    {"pais":"Corea del Sur","participacion":12.0},
+    {"pais":"Italia","participacion":8.0},
+    {"pais":"Brasil","participacion":5.0},
+    {"pais":"Otros","participacion":5.0}
+  ],
+  "marcas": [
+    {"marca":"Putzmeister","participacion":22.0},
+    {"marca":"Sany","participacion":20.0},
+    {"marca":"Zoomlion","participacion":18.0},
+    {"marca":"XCMG","participacion":14.0},
+    {"marca":"Schwing","participacion":9.0},
+    {"marca":"Otras","participacion":17.0}
+  ],
+  "tipos": [
+    {"tipo":"Placas y anillos de desgaste (W)","participacion":40.0},
+    {"tipo":"Mangueras y juntas (R)","participacion":25.0},
+    {"tipo":"Tubos y bridas (WT)","participacion":20.0},
+    {"tipo":"Otros repuestos","participacion":15.0}
+  ]
+}
