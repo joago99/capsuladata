@@ -121,6 +121,19 @@ footer .commercial{font-size:0.6rem;text-transform:uppercase;letter-spacing:0.15
 
 </footer>
 
+<!-- MUNDO: 5 gráficos extras -->
+<section class="block" id="mundo">
+<h2 class="section-title">Chile vs el mundo</h2>
+<p class="section-sub">Comparativa internacional de PIB per cápita, población y convergencia económica. Fuentes: Banco Mundial, BCCh, INE.</p>
+<div class="sc-grid" id="scGrid">
+<div class="sc-card"><h3>1. La brecha que no se cierra</h3><div class="bigidea">Chile creció sostenidamente, pero EE.UU. y Noruega se alejan: en 2023 Chile tiene 1/5 del PIB per cápita de Noruega.</div><canvas id="sc1"></canvas><div class="note">Línea roja = Chile. Escala lineal en USD.</div></div>
+<div class="sc-card"><h3>2. ¿Dónde cae Chile hoy?</h3><div class="bigidea">Chile lidera a sus pares sudamericanos, pero está a mitad de tabla global.</div><canvas id="sc2"></canvas><div class="note">Ranking 2023, barras horizontales. Chile en rojo destacado.</div></div>
+<div class="sc-card"><h3>3. ¿Quién corrió más desde 1990?</h3><div class="bigidea">China multiplicó su PIB per cápita por 12x; Chile por 4x. La distancia relativa con Asia se amplió.</div><canvas id="sc3"></canvas><div class="note">Índice base 1990 = 100.</div></div>
+<div class="sc-card"><h3>4. Convergencia: Chile vs mediana mundial</h3><div class="bigidea">Chile superó la mediana de los países comparados a partir de 2005.</div><canvas id="sc4"></canvas><div class="note">Chile (rojo) vs mediana de los 23 países.</div></div>
+<div class="sc-card"><h3>5. ¿Cuántos somos?</h3><div class="bigidea">Chile tiene 19,7 millones de habitantes: el 0,24% del mundo. India y China concentran el 36% de la población global.</div><canvas id="sc5"></canvas><div class="note">Ranking de población 2023. Chile en rojo; otros países latinoamericanos en azul. Fuente: Banco Mundial.</div></div>
+</div>
+</section>
+
 <script>
 // ==================== DATA: CHILE ====================
 const ideologyColors = {farLeft:'#991b1b',left:'#dc2626',centerLeft:'#f87171',center:'#78716c',centerRight:'#60a5fa',right:'#2563eb',farRight:'#1e3a5f'};
