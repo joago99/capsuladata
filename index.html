@@ -1,0 +1,155 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>CápsulaData — Datos macro de Latinoamérica, claros y accesibles</title>
+<link href="https://fonts.googleapis.com/css2?family=Bebas+Neue&family=Share+Tech+Mono&family=Playfair+Display:ital,wght@0,700;1,600;1,700&display=swap" rel="stylesheet">
+<style>
+*{margin:0;padding:0;box-sizing:border-box}
+:root{
+  --bg:#1a1206;
+  --bg2:#241608;
+  --card:#2b1c0c;
+  --text:#f4e9d8;
+  --muted:#c9a87a;
+  --accent:#ea7317;
+  --accent2:#eab308;
+  --olive:#6b7a3a;
+  --border:#3f2a14;
+  --line:#5a3c1c;
+  --chile:#f87171;
+}
+body{font-family:'Share Tech Mono',monospace;background:var(--bg);color:var(--text);line-height:1.5}
+/* textura halftone sutil tipo FNV */
+body::before{content:"";position:fixed;inset:0;pointer-events:none;z-index:0;
+  background-image:radial-gradient(rgba(234,115,23,0.04) 1px, transparent 1px);
+  background-size:6px 6px;opacity:0.6}
+header{display:flex;justify-content:space-between;align-items:center;padding:1.2rem 2rem;border-bottom:2px solid var(--accent);position:sticky;top:0;background:var(--bg2);z-index:10}
+header .brand{font-family:'Bebas Neue',sans-serif;font-weight:400;font-size:1.6rem;letter-spacing:0.04em;color:var(--text);text-shadow:1px 1px 0 #000;text-transform:uppercase}
+header .brand .sub{font-family:'Share Tech Mono',monospace;font-size:0.55rem;color:var(--accent2);display:block;margin-top:-2px;letter-spacing:0.05em;text-transform:uppercase}
+.la-linea{font-family:'Playfair Display',serif;font-style:italic;letter-spacing:-0.02em}
+.la-linea.head{font-size:1.05rem}
+.la-linea.prod{font-size:1.6rem;color:var(--accent2)}
+header nav a{color:var(--muted);text-decoration:none;margin-left:1.5rem;font-size:0.85rem;transition:color .2s}
+header nav a:hover{color:var(--accent)}
+.hero{padding:5rem 2rem 3rem;text-align:center;background:radial-gradient(circle at 50% 30%,#3a230d 0%,#1a1206 60%);border-bottom:2px solid var(--accent);position:relative;overflow:hidden}
+.hero::after{content:"";position:absolute;inset:0;pointer-events:none;background:repeating-linear-gradient(0deg,transparent,transparent 3px,rgba(0,0,0,0.06) 3px,rgba(0,0,0,0.06) 4px);z-index:0}
+.hero>*{position:relative;z-index:1}
+.hero h1{font-family:'Bebas Neue',sans-serif;font-size:clamp(2.8rem,7vw,5.5rem);font-weight:400;line-height:0.95;color:var(--text);text-shadow:2px 2px 0 #000;letter-spacing:0.02em;text-transform:uppercase}
+.hero h1 span{background:linear-gradient(135deg,#ea7317,#eab308);-webkit-background-clip:text;background-clip:text;color:transparent}
+.hero p{max-width:680px;margin:1.5rem auto 0;color:var(--muted);font-size:1.05rem}
+.hero .stats{display:flex;gap:2rem;justify-content:center;flex-wrap:wrap;margin-top:2.5rem}
+.hero .stat{text-align:center}
+.hero .stat .num{font-family:'Share Tech Mono',monospace;font-size:2rem;font-weight:400;color:var(--accent2);letter-spacing:-0.02em}
+.hero .stat .lbl{font-size:0.7rem;color:var(--muted);text-transform:uppercase;letter-spacing:0.05em}
+.hero .cta{margin-top:2.5rem;display:flex;gap:1rem;justify-content:center;flex-wrap:wrap}
+.btn{background:var(--accent);color:#1a1206;border:2px solid #000;padding:0.7rem 1.5rem;border-radius:0;font-weight:700;text-decoration:none;font-size:0.9rem;letter-spacing:0.03em;text-transform:uppercase;transition:all .2s;box-shadow:3px 3px 0 #000;font-family:'Share Tech Mono',monospace}
+.btn:hover{background:var(--accent2);transform:translate(-1px,-1px);box-shadow:4px 4px 0 #000}
+.btn.outline{background:transparent;border:2px solid var(--accent);color:var(--text);box-shadow:none}
+.btn.outline:hover{border-color:var(--accent2);color:var(--accent2);transform:none}
+section.block{padding:3.5rem 2rem;max-width:1000px;margin:0 auto;border-top:1px solid var(--border);position:relative;z-index:1}
+.section-title{font-family:'Bebas Neue',sans-serif;font-size:2rem;font-weight:400;margin-bottom:0.5rem;color:var(--accent);text-transform:uppercase;letter-spacing:0.04em}
+.section-sub{color:var(--muted);max-width:680px;margin-bottom:2rem;font-size:0.9rem}
+.cards{display:grid;grid-template-columns:repeat(auto-fit,minmax(240px,1fr));gap:1.5rem}
+.card{background:var(--card);border:2px solid var(--line);border-radius:0;padding:1.6rem;transition:border-color .2s;box-shadow:3px 3px 0 #000}
+.card:hover{border-color:var(--accent)}
+.card h3{font-family:'Share Tech Mono',monospace;font-size:1rem;margin-bottom:0.4rem;color:var(--accent2);letter-spacing:-0.02em}
+.card p{color:var(--muted);font-size:0.82rem}
+.product{background:var(--card);border:2px solid var(--accent);border-radius:0;padding:2rem;margin-top:1.5rem;display:flex;gap:2rem;align-items:center;flex-wrap:wrap;box-shadow:3px 3px 0 #000}
+.product .info{flex:1;min-width:260px}
+.product h3{font-family:'Share Tech Mono',monospace;font-size:1.2rem;margin-bottom:0.4rem;color:var(--text);letter-spacing:-0.02em}
+.product p{color:var(--muted);font-size:0.85rem}
+.product a{margin-top:1rem;display:inline-block}
+.feature-grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(180px,1fr));gap:1rem;margin-top:1.5rem}
+.feature{background:var(--card);border:2px solid var(--line);border-radius:0;padding:1rem;text-align:center;box-shadow:3px 3px 0 #000}
+.feature .num{font-family:'Share Tech Mono',monospace;font-size:1.6rem;font-weight:400;color:var(--accent2);letter-spacing:-0.03em}
+.feature .lbl{font-size:0.7rem;color:var(--muted);margin-top:0.15rem;text-transform:uppercase;letter-spacing:0.03em}
+.use-grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(220px,1fr));gap:1.2rem;margin-top:1.5rem}
+.use{background:var(--card);border:2px solid var(--line);border-radius:0;padding:1.3rem;box-shadow:3px 3px 0 #000}
+.use h4{font-family:'Share Tech Mono',monospace;font-size:0.85rem;margin-bottom:0.3rem;color:var(--accent2);letter-spacing:-0.02em}
+.use p{color:var(--muted);font-size:0.78rem}
+footer{border-top:2px solid var(--accent);padding:2.5rem 2rem;text-align:center;color:var(--muted);font-size:0.8rem;background:var(--bg2);position:relative;z-index:1}
+footer a{color:var(--accent2);text-decoration:none}
+footer .brand{font-family:'Playfair Display',serif;font-size:1.5rem;color:var(--text);text-shadow:1px 1px 0 #000}
+@media(max-width:768px){header nav{display:none}.product{flex-direction:column}}
+</style>
+</head>
+<body>
+<header>
+<div class="brand" style="display:flex;align-items:center;gap:0.5rem"><img src="./logo.png" alt="CápsulaData" style="height:38px;width:auto"><div>CápsulaData<span class="sub">Datos oficiales ordenados y listos para tus decisiones</span></div></div>
+<nav>
+<a href="./lalinea.html" class="btn" style="margin-left:1rem;padding:0.5rem 1.1rem"><span class="la-linea head">La Línea</span> →</a>
+</nav>
+</header>
+
+<section class="hero">
+<h1>Datos macro, claros,<br>accesibles para decidir</h1>
+<p>De fuentes dispersas a una capa confiable, inmediata. Integramos bancos centrales, institutos de estadística y organismos multilaterales en datos limpios, trazables y listos para análisis. Sin ruido, sin Excel perdido, sin incertidumbre sobre la fuente.</p>
+<div class="stats">
+<div class="stat"><div class="num">13</div><div class="lbl">Indicadores macro</div></div>
+<div class="stat"><div class="num">24</div><div class="lbl">Países comparados</div></div>
+<div class="stat"><div class="num">68</div><div class="lbl">Años de historia</div></div>
+<div class="stat"><div class="num">63</div><div class="lbl">Eventos clave</div></div>
+</div>
+<div class="cta">
+<a href="#producto" class="btn">Explorar La Línea</a>
+<a href="#que" class="btn outline">Cómo funciona</a>
+</div>
+</section>
+
+<section class="block" id="que">
+<h2 class="section-title">Qué hacemos</h2>
+<p class="section-sub">Tomamos datos que existen, pero que están dispersos, con formatos distintos y documentación inconsistentes, y los convertimos en algo útil.</p>
+<div class="cards">
+<div class="card"><h3>Integración multi-fuente</h3><p>BCCh, INE, Banco Mundial, y más. Un mismo formato, una misma consulta. Sin depender de APIs frágiles ni hojas de cálculo desactualizadas.</p></div>
+<div class="card"><h3>Visualización interactiva</h3><p>Dashboards que cruzan indicadores económicos con períodos presidenciales y eventos históricos. Para ver relaciones que en tablas no se ven.</p></div>
+<div class="card"><h3>Contexto internacional</h3><p>No basta con mirarse el ombligo. Cada indicador de Chile se puede comparar con 23 economías: pares regionales, potencias globales y mercados emergentes.</p></div>
+</div>
+<div class="feature-grid">
+<div class="feature"><div class="num">1958</div><div class="lbl">Datos desde</div></div>
+<div class="feature"><div class="num">12</div><div class="lbl">Períodos presidenciales</div></div>
+<div class="feature"><div class="num">24</div><div class="lbl">Países en ranking</div></div>
+<div class="feature"><div class="num">5</div><div class="lbl">Gráficos de comparación</div></div>
+</div>
+</section>
+
+<section class="block" id="producto">
+<h2 class="section-title"><span class="la-linea prod">La Línea</span></h2>
+<p class="section-sub">Nuestro laboratorio público. Una línea de tiempo interactiva de la economía chilena que muestra hacia dónde vamos — y de dónde venimos.</p>
+<div class="product">
+<div class="info">
+<h3>La economía de Chile, 1958 – hoy</h3>
+<p>13 indicadores macro en un solo dashboard: PIB, inflación, tipo de cambio, tasas, empleo, cobre, petróleo y población. Filtra por presidente para ver el contexto político de cada cifra. Compara el PIB per cápita de Chile con 23 países. Mira cómo ha evolucionado la población. Todo con datos del Banco Central de Chile, INE y Banco Mundial, actualizados y documentados.</p>
+<a href="./lalinea.html" class="btn">Abrir La Línea →</a>
+</div>
+</div>
+</section>
+
+<section class="block" id="para">
+<h2 class="section-title">Para quién</h2>
+<p class="section-sub">CápsulaData sirve a equipos que necesitan entender la macroeconomía sin perderse en fuentes dispersas.</p>
+<div class="use-grid">
+<div class="use"><h4>Analistas de inversiones</h4><p>Seguimiento de indicadores clave para fundamentar decisiones de portafolio con datos oficiales, no con rumores.</p></div>
+<div class="use"><h4>Periodistas de datos</h4><p>Contexto económico verificable para reportajes, con referencias cruzadas a eventos políticos y sociales.</p></div>
+<div class="use"><h4>Académicos e investigadores</h4><p>Series largas y limpias para análisis econométrico, sin pasar horas limpiando formatos inconsistentes.</p></div>
+<div class="use"><h4>Equipos de gobierno</h4><p>Benchmark regional para políticas públicas con datos comparables entre países de América Latina.</p></div>
+</div>
+</section>
+
+<section class="block" id="contacto">
+<h2 class="section-title">Hablemos</h2>
+<p class="section-sub">¿Quieres este tipo de análisis para tu sector, institución o proyecto? Construimos dashboards a medida, integraciones API y modelos sobre datos macro de cualquier país de la región.</p>
+<p style="font-size:0.95rem;margin-bottom:0.8rem">Conéctate para conversar:</p>
+<a href="https://www.linkedin.com/in/JoaquinAlmendra" target="_blank" rel="noopener" class="btn">LinkedIn de CápsulaData</a>
+</section>
+
+<footer>
+<div class="brand">La Línea</div>
+<div class="commercial">Powered by CápsulaData</div>
+<p>Análisis de grandes datos · Entender · Diagnosticar · Predecir</p>
+<p style="margin-top:1.5rem;font-size:0.9rem">¿Quieres este tipo de análisis para tu empresa o proyecto?</p>
+<a href="https://www.linkedin.com/in/JoaquinAlmendra" target="_blank" rel="noopener" class="btn" style="margin-top:0.8rem;display:inline-block">Conéctemos en LinkedIn</a>
+</footer>
+</body>
+</html>
